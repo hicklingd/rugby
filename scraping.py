@@ -10,6 +10,15 @@ URL = 'https://www.ultimaterugby.com/match/list?date=recent&page=1'
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.text, 'html.parser')
+years_list = []
+years = soup.select("div.main-content div.match-detail")
+for year in years:
+    year_1=year.find_all("a")
+    for year_i in year_1:
+        year_f = year_i.string.split(' ')[-1]
+        years_list.append(year_f)
+
+print(years_list)
 
 #finding scores, working down the page from right to left, can also work out the winners with this but will do so in data analysis
 # cant go straight to scores as we need to filter out matches that havent been played for one reason or another
