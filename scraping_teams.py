@@ -7,19 +7,6 @@ from random import randint
 import numpy as np
 start = datetime.now()
 
-list_of_names_h=[]
-list_of_names_a=[]
-list_of_scores=[]
-date_list=[]
-tournament_list = []
-dataframe = pd.DataFrame({
-    'Home_Team': list_of_names_h,
-    'Away_Team': list_of_names_a,
-    'Home_score': list_of_scores[0::2],
-    'Away_Score': list_of_scores[1::2],
-    'Date': date_list,
-    'Tournament': tournament_list
-})
 i=0
 for page in range(1,2):#693):
     
