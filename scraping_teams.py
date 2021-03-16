@@ -54,11 +54,12 @@ for page in range(1,2):#693):
                 # the + finds the first table element that is placed immediatly after the div elements
                 #lineup_tms = soup_lineup.select("div.main-content div.container div.lineup-container + table td.team-home span.name")[0]
                 home_squad = soup_lineup.select("td.team-home span.name")
-                for ii in home_squad:
+                home_squad_list = []
+                for player in home_squad:
                     #because of double barreled surnames and long first names we cant split at capital letters, so have to do it the convoluted way 
-                    splitter = str(ii).replace('<span class="name">\n\t\t\t\t\t\t','').replace('\t\t\t\t\t</span>','').split('<br/>')
-                    print(splitter)
-                    
+                    splitter = str(player).replace('<span class="name">\n\t\t\t\t\t\t','').replace('\t\t\t\t\t</span>','').replace('<br/>',' ')
+                    home_squad_list.append(splitter)
+                print(home_squad_list)   
                 #print(home_squad)
 
                 
