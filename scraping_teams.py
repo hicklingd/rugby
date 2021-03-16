@@ -44,13 +44,28 @@ for page in range(1,2):#693):
                 lineup_url_f = soup_base.select("div.main-content div.container ul.page-nav") 
                 for lineup_url_f1 in lineup_url_f:
                     #picking the 2nd url in the board to get the url for the lineup
-                    lineup_url = lineup_url_f1.find_all('a', href=True)[2]['href']
+                    lineup_url = lineup_url_f1.find_all('a', href=True)[1]['href']
                     
                 # now following this url to the lineup page 
-                URL_lineup = 'https://www.ultimaterugby.com'+match_c1['href']
-                page_lineup = requests.get(URL_base)
-                soup_lineup = BeautifulSoup(page_base.text, 'html.parser')
+                URL_lineup = 'https://www.ultimaterugby.com'+lineup_url
+                print(URL_lineup)
+                page_lineup = requests.get(URL_lineup)
+                soup_lineup = BeautifulSoup(page_lineup.text, 'html.parser')
+                # the + finds the first table element that is placed immediatly after the div elements
+                #lineup_tms = soup_lineup.select("div.main-content div.container div.lineup-container + table td.team-home span.name")[0]
+                home_squad = soup_lineup.select("td.team-home span.name")
+                for ii in home_squad:
+                    #because of double barreled surnames and long first names we cant split at capital letters, so have to do it the convoluted way 
+                    splitter = str(ii).replace('<span class="name">\n\t\t\t\t\t\t','').replace('\t\t\t\t\t</span>','').split('<br/>')
+                    print(splitter)
+                    
+                #print(home_squad)
 
+                
+
+                
+
+                
     
     
     
