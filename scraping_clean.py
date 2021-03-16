@@ -21,7 +21,7 @@ dataframe = pd.DataFrame({
     'Tournament': tournament_list
 })
 
-for page in range(1,693):
+for page in range(1,201):
     sleep(randint(2,10))
     URL = 'https://www.ultimaterugby.com/match/list?date=recent&page='+str(page)
 
@@ -62,15 +62,6 @@ for page in range(1,693):
         if score_1:
             for score_i in score_1:
                 list_of_scores.append(str(score_i.string).strip())
-            '''
-            # will need to work out years at some point, in class match-detail
-            date = score.select("div.kickoff span.date")
-            for i in date:
-                date_m = str(i.string)
-                date_f=datetime.strptime(date_m, "%a, %b %d")
-                print(date_f.strftime("%d/%m"))
-            '''
-
         #games without scores are assumed to not have been played and therefore have a n/a score
         else:
             list_of_scores+=['n/a','n/a']
