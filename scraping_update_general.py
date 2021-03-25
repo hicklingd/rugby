@@ -17,7 +17,7 @@ c = conn.cursor()
 last_row = tuple(c.execute("SELECT * FROM rugby_data where id= (SELECT MAX(id) FROM rugby_data)"))
 
 
-page_n = 0
+page_n = 1
 
 Master_Home_Team = []
 Master_Away_Team=[]
@@ -111,6 +111,7 @@ while breaker == True:
         Master_Tournament.append(tournament_list[index])
     print('next_page')
     page_n +=1
+
 
 
 
